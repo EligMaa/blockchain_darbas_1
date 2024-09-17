@@ -1,0 +1,82 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <vector>
+#include <string>
+
+void ivedimas ( );
+
+using namespace std;
+
+
+vector<string> failai {"pirmas.txt" , "antras.txt" , "trecias.txt" , "ketvirtas.txt" , "penktas.txt" , "sestas.txt"};
+int main() {
+    
+    ivedimas();
+    return 0;
+}
+
+
+void ivedimas ( ){
+
+    ifstream in ;
+    int meniu;
+    bool baigti = false;
+
+    do {
+        cout<<"Failu pasirinkimai:"<<endl;
+        cout<<"1 - \"pirmas.txt\""<<endl;
+        cout<<"2 - \"antras.txt\""<<endl;
+        cout<<"3 - \"trecias.txt\""<<endl;
+        cout<<"0 - baigti"<<endl;
+        
+        cout<<"--------------------------------------------------------"<<endl;
+        
+            try {
+                cout << "Iveskite pasirinkima: " << endl;
+                string input;
+                cin >> input;
+
+                if (input.find_first_not_of("0123456789") != string::npos) {                                  ///tikrina ar ivestas skaicius naturalusis
+                throw invalid_argument("Netinkamas pasirinkimas");
+                }
+
+                meniu = stoi(input);
+
+                if (meniu < 0 || meniu > 6) {                                                                ///tikrina ar ivestas skaicius yra nuo 1 iki 3
+                    throw invalid_argument("Klaida! Iveskite nuo 1 iki 6 ");
+                }
+                            
+            } 
+                        
+            catch (const invalid_argument & e) {
+                cerr << "Klaida: " << e.what() << endl;
+                cout << endl;
+
+                continue;
+            }    
+
+            switch (meniu)                                                                                  /// meniu skirtas v0.2
+            {
+                case 1:
+                    in.open(failai[0]);
+                    break;
+
+                case 2:
+                    in.open(failai[1]);
+                    break;
+                
+                case 3:
+                    in.open(failai[2]);
+                    break;
+                
+                case 0:
+                    baigti = true;
+                    break;  
+
+            }
+    }while (!baigti);
+            
+
+
+}
