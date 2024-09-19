@@ -1,25 +1,13 @@
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-#include <vector>
-#include <string>
+#include "header.h"
 
-void ivedimas ( );
-
-using namespace std;
-
-
-vector<string> failai {"pirmas.txt" , "antras.txt" , "trecias.txt" , "ketvirtas.txt" , "penktas.txt" , "sestas.txt"};
 int main() {
     
     ivedimas();
     return 0;
 }
 
-
 void ivedimas ( ){
 
-    ifstream in ;
     int meniu;
     bool baigti = false;
 
@@ -59,15 +47,16 @@ void ivedimas ( ){
             switch (meniu)                                                                                  /// meniu skirtas v0.2
             {
                 case 1:
-                    in.open(failai[0]);
+
+                    nuu().skaitymas(failai[0]);
                     break;
 
                 case 2:
-                    in.open(failai[1]);
+
                     break;
                 
                 case 3:
-                    in.open(failai[2]);
+
                     break;
                 
                 case 0:
@@ -77,6 +66,16 @@ void ivedimas ( ){
             }
     }while (!baigti);
             
+}
+
+void nuu::hash ( ){
+
 
 
 }
+
+
+
+
+
+
