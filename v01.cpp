@@ -11,6 +11,7 @@ void ivedimas ( ){
 
     int meniu;
     bool baigti = false;
+    int nr =0;
 
 
     do {
@@ -46,21 +47,24 @@ void ivedimas ( ){
                 continue;
             }    
 
-            switch (meniu)                                                                                  /// meniu skirtas v0.2
+            switch (meniu)
             {
                 case 1:
 
-                    // nuu().skaitymas(failai[0]);
-                    nuu( );
+                    nuu( 0 );
                         
 
                     break;
 
                 case 2:
 
+                    nuu(1);
+
                     break;
                 
                 case 3:
+
+                    nuu(2);
 
                     break;
                 

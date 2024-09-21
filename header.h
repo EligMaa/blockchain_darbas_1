@@ -17,15 +17,19 @@
 using namespace std;
 const std::vector<std::string> failai {"pirmas.txt" , "antras.txt" , "trecias.txt" , "ketvirtas.txt" , "penktas.txt" , "sestas.txt"};
 
+void ivedimas ( );
+
 class nuu{
 
     public:
-        nuu( );
+        nuu();
+        nuu(int nr);
         inline ~nuu() {}
 
-        void skaitymas (const string &ivestis);
+        string skaitymas (const string &ivestis);
 
     private:
+        int nr;
         string ivestis;
         int ilgis;
         void hash (string &ivestis );
@@ -33,9 +37,6 @@ class nuu{
         
 };
 
-
-
-void ivedimas();
 
 
 #endif
