@@ -11,7 +11,6 @@ void ivedimas ( ){
 
     int meniu;
     bool baigti = false;
-    int nr =0;
 
 
     do {
@@ -19,6 +18,7 @@ void ivedimas ( ){
         cout<<"1 - \"pirmas.txt\""<<endl;
         cout<<"2 - \"antras.txt\""<<endl;
         cout<<"3 - \"trecias.txt\""<<endl;
+        cout<<"4 - ivesti ranka"<<endl;
         cout<<"0 - baigti"<<endl;
         
         cout<<"--------------------------------------------------------"<<endl;
@@ -28,14 +28,14 @@ void ivedimas ( ){
                 string input;
                 cin >> input;
 
-                if (input.find_first_not_of("0123456789") != string::npos) {                                  ///tikrina ar ivestas skaicius naturalusis
+                if (input.find_first_not_of("0123456789") != string::npos) {     ///tikrina ar ivestas skaicius naturalusis
                 throw invalid_argument("Netinkamas pasirinkimas");
                 }
 
                 meniu = stoi(input);
 
-                if (meniu < 0 || meniu > 6) {                                                                ///tikrina ar ivestas skaicius yra nuo 1 iki 3
-                    throw invalid_argument("Klaida! Iveskite nuo 1 iki 6 ");
+                if (meniu < 0 || meniu > 4) {                                   ///tikrina ar ivestas skaicius yra nuo 1 iki 4
+                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 4 ");
                 }
                             
             } 
@@ -50,22 +50,16 @@ void ivedimas ( ){
             switch (meniu)
             {
                 case 1:
-
-                    nuu( 0 );
-                        
-
+                    nuu(0);     
                     break;
-
                 case 2:
-
                     nuu(1);
-
                     break;
-                
                 case 3:
-
                     nuu(2);
-
+                    break;
+                case 4:
+                    nuu(3);
                     break;
                 
                 case 0:
