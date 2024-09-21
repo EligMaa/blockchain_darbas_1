@@ -1,4 +1,5 @@
 #include "header.h"
+#include "kod.h"
 
 int main() {
     
@@ -11,8 +12,9 @@ void ivedimas ( ){
     int meniu;
     bool baigti = false;
 
+
     do {
-        cout<<"Failu pasirinkimai:"<<endl;
+        cout<<"\nFailu pasirinkimai:"<<endl;
         cout<<"1 - \"pirmas.txt\""<<endl;
         cout<<"2 - \"antras.txt\""<<endl;
         cout<<"3 - \"trecias.txt\""<<endl;
@@ -48,7 +50,10 @@ void ivedimas ( ){
             {
                 case 1:
 
-                    nuu().skaitymas(failai[0]);
+                    // nuu().skaitymas(failai[0]);
+                    nuu( );
+                        
+
                     break;
 
                 case 2:
@@ -68,11 +73,6 @@ void ivedimas ( ){
             
 }
 
-void nuu::hash ( ){
-
-
-
-}
 
 
 

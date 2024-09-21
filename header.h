@@ -6,6 +6,11 @@
 #include <iomanip>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <bitset>
+#include <array>
+#include <sstream>
+
 
 
 
@@ -16,23 +21,19 @@ class nuu{
 
     public:
         nuu( );
-        ~nuu();
+        inline ~nuu() {}
 
         void skaitymas (const string &ivestis);
 
     private:
         string ivestis;
-        void hash ( );
+        int ilgis;
+        void hash (string &ivestis );
+        string konvertavimas(const array<unsigned long long, 4>& hash);
         
 };
 
-nuu::nuu( )
-{
-}
 
-nuu::~nuu()
-{
-}
 
 void ivedimas();
 
