@@ -24,6 +24,7 @@ void ivedimas ( ){
         cout<<"7 - \"testas_tuscias.txt\""<<endl;
         cout<<"8 - ivesti ranka"<<endl;
         cout<<"9 - generuoti testus"<<endl;
+        cout<<"10 - laiko testavimas"<<endl;
         cout<<"0 - baigti"<<endl;
         
         cout<<"--------------------------------------------------------"<<endl;
@@ -39,8 +40,8 @@ void ivedimas ( ){
 
                 meniu = stoi(input);
 
-                if (meniu < 0 || meniu > 9) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
-                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 9 ");
+                if (meniu < 0 || meniu > 10) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
+                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 10 ");
                 }
                             
             } 
@@ -82,6 +83,9 @@ void ivedimas ( ){
                     generuoja_failus_Ats("testasAts1.txt", 1000);   
                     generuoja_failus_Ats("testasAts2.txt", 1000);   
                     generuoja_f_su_viena_skirtinga("testas_v_A.txt", "testas_v_B.txt", 1000);
+                    break;
+                case 10:
+                    testavimas("konstitucija.txt");
                     break;
                 
                 case 0:
