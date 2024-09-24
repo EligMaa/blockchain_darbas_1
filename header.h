@@ -11,6 +11,7 @@
 #include <array>
 #include <sstream>
 #include <random>
+#include <chrono>
 
 
 
@@ -29,10 +30,12 @@ class nuu{
         inline ~nuu() {}
 
         string skaitymas (const string &ivestis);
+        double laiko_matavimas( string& ivestis);
 
     private:
         int nr;
         string ivestis;
+        string uzhashuotas;
         int ilgis;
         void hash (string &ivestis );
         string konvertavimas(const array<unsigned long long, 4>& hash);

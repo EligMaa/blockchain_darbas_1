@@ -39,7 +39,7 @@ void ivedimas ( ){
 
                 meniu = stoi(input);
 
-                if (meniu < 0 || meniu > 9) {                                   ///tikrina ar ivestas skaicius yra nuo 1 iki 4
+                if (meniu < 0 || meniu > 9) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
                     throw invalid_argument("Klaida! Iveskite nuo 0 iki 9 ");
                 }
                             
@@ -79,8 +79,8 @@ void ivedimas ( ){
                     nuu(7);
                     break;
                 case 9:
-                    generuoja_failus_1_2("testasAts1.txt", 1000);   
-                    generuoja_failus_1_2("testasAts2.txt", 1000);   
+                    generuoja_failus_Ats("testasAts1.txt", 1000);   
+                    generuoja_failus_Ats("testasAts2.txt", 1000);   
                     generuoja_f_su_viena_skirtinga("testas_v_A.txt", "testas_v_B.txt", 1000);
                     break;
                 
