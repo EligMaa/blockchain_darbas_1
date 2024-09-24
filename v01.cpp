@@ -15,10 +15,15 @@ void ivedimas ( ){
 
     do {
         cout<<"\nFailu pasirinkimai:"<<endl;
-        cout<<"1 - \"pirmas.txt\""<<endl;
-        cout<<"2 - \"antras.txt\""<<endl;
-        cout<<"3 - \"trecias.txt\""<<endl;
-        cout<<"4 - ivesti ranka"<<endl;
+        cout<<"1 - \"testasA.txt\""<<endl;
+        cout<<"2 - \"testasB.txt\""<<endl;
+        cout<<"3 - \"testasAts1.txt\""<<endl;
+        cout<<"4 - \"testasAts2.txt\""<<endl;
+        cout<<"5 - \"testas_v_A.txt\""<<endl;
+        cout<<"6 - \"testas_v_B.txt\""<<endl;
+        cout<<"7 - \"testas_tuscias.txt\""<<endl;
+        cout<<"8 - ivesti ranka"<<endl;
+        cout<<"9 - generuoti testus"<<endl;
         cout<<"0 - baigti"<<endl;
         
         cout<<"--------------------------------------------------------"<<endl;
@@ -34,8 +39,8 @@ void ivedimas ( ){
 
                 meniu = stoi(input);
 
-                if (meniu < 0 || meniu > 4) {                                   ///tikrina ar ivestas skaicius yra nuo 1 iki 4
-                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 4 ");
+                if (meniu < 0 || meniu > 9) {                                   ///tikrina ar ivestas skaicius yra nuo 1 iki 4
+                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 9 ");
                 }
                             
             } 
@@ -50,7 +55,7 @@ void ivedimas ( ){
             switch (meniu)
             {
                 case 1:
-                    nuu(0);     
+                    nuu(0);
                     break;
                 case 2:
                     nuu(1);
@@ -60,6 +65,23 @@ void ivedimas ( ){
                     break;
                 case 4:
                     nuu(3);
+                    break;
+                case 5:
+                    nuu(4);
+                    break;
+                case 6:
+                    nuu(5);
+                    break;
+                case 7:
+                    nuu(6);
+                    break;
+                case 8:
+                    nuu(7);
+                    break;
+                case 9:
+                    generuoja_failus_1_2("testasAts1.txt", 1000);   
+                    generuoja_failus_1_2("testasAts2.txt", 1000);   
+                    generuoja_f_su_viena_skirtinga("testas_v_A.txt", "testas_v_B.txt", 1000);
                     break;
                 
                 case 0:
