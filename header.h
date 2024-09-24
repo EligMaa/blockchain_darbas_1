@@ -10,12 +10,14 @@
 #include <bitset>
 #include <array>
 #include <sstream>
+#include <random>
 
 
 
 
 using namespace std;
-const std::vector<std::string> failai {"pirmas.txt" , "antras.txt" , "trecias.txt" , "ketvirtas.txt" , "penktas.txt" , "sestas.txt"};
+const std::vector<std::string> failai {"testasA.txt" , "testasB.txt" , "testasAts1.txt" , "testasAts2.txt" ,
+ "testas_v_A.txt" , "testas_v_B.txt", "testas_tuscias.txt"};
 
 void ivedimas ( );
 
