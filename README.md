@@ -23,6 +23,7 @@
 | 4   | 0 s.   | 0 s.        | 0 s.        | 0.000996 s. | 0.000173 s. | 0 s.        | 0.000995 s. | 0.001994 s. | 0.006155 s. | 0.006021 s. | 0.006847 s. |
 | 5   | 0 s.   | 0 s.        | 0 s.        | 0 s.        | 0 s.        | 0 s.        | 0.000998 s. | 0.001996 s. | 0.004627 s. | 0.00803 s.  | 0.00803 s.  | 
 
-![image](https://github.com/user-attachments/assets/b629bed6-e2dd-4896-b762-80c295c75a3b) <br>
+<img src="https://github.com/user-attachments/assets/b629bed6-e2dd-4896-b762-80c295c75a3b" width="500">
+
 
 
