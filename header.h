@@ -28,6 +28,7 @@ void atsitiktiniu_eiluciu_poros ();
 int bitu_lyginimas(const string& hash1, const string& hash2);
 string hex_i_binaru(const string& hex);
 int hex_lyginimas(const string& hash1, const string& hash2);
+void lavinos_failas();
 
 class nuu{
 

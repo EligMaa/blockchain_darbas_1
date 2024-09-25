@@ -19,8 +19,8 @@ nuu::nuu( int nr ) {
 
 string nuu::hash(string &ivestis){
 
-    unsigned long long randomas = ivestis.length() / 2 + 1;
-    unsigned long long randomas2 = ivestis.length() / 3 - 9;
+    unsigned long long randomas = 9999854665226455ULL;
+    unsigned long long randomas2 = 98880025054544054ULL;
 
     array<unsigned long long, 4> hash = {0, 0, 0, 0};
     int j = 0;
@@ -31,7 +31,7 @@ string nuu::hash(string &ivestis){
 
         for (int i = 0; i < 4; ++i) {
             
-            hash[i] ^= (randomas * 999999 + simbolis );
+            hash[i] ^= (randomas + simbolis );
             hash[i] *= (randomas2 ^ hash[i] * hash[i] );
         }
         
@@ -174,13 +174,27 @@ void testavimas( string pav) {
     }
 }
 
-string atsitiktinis_stringas(int length) {
-    const string raides = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string atsitiktiniai_st;
-    for (int i = 0; i < length; ++i) {
-        atsitiktiniai_st += raides[rand() % raides.size()];
+// string atsitiktinis_stringas(int ilgis) {
+//     const string raides = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//     string atsitiktiniai_st;
+//     for (int i = 0; i < ilgis; ++i) {
+//         atsitiktiniai_st += raides[rand() % raides.size()];
+//     }
+//     return atsitiktiniai_st;
+// }
+string atsitiktinis_stringas(int ilgis) {
+    static const char simb[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+
+    string atsitiktinis_st;
+    atsitiktinis_st.reserve(ilgis);
+
+    for (int i = 0; i < ilgis; ++i) {
+        atsitiktinis_st += simb[rand() % (sizeof(simb) - 1)];
     }
-    return atsitiktiniai_st;
+    return atsitiktinis_st;
 }
 
 void poru_generavimas(int poros, int ilgis, ofstream &failo_pav) {
@@ -245,9 +259,26 @@ void nuu::tikrinti_hash_kolizijas() {
     cout << "Koliziju skaicius: " << kolizijos << endl;
 }
 
-void nuu::lavinos_testavimas(){
+void lavinos_failas(){
 
     ofstream failo_pav("lavinos.txt");
+
+    for (int i = 0; i < 100000; ++i) {
+
+        string str1 = atsitiktinis_stringas(999);
+        string str2 = str1 + 'A';
+        str1 += 'B';
+        failo_pav << str1 << " " << str2 << endl;
+
+    }
+    failo_pav.close();
+}
+
+
+void nuu::lavinos_testavimas(){
+
+    ifstream failas ("lavinos.txt");
+    string eilute;
 
     int min_bit = 260 ;
     int max_bit = 0;
@@ -256,15 +287,14 @@ void nuu::lavinos_testavimas(){
     int max_hex = 0;
     int vidurkis_hex = 0;
 
-    for (int i = 0; i < 100000; ++i) {
-        string str1 = atsitiktinis_stringas(999);
-        string str2 = str1 + 'A';
-        str1 += 'B';
+    while(getline(failas, eilute)) {
+
+        istringstream is(eilute);
+        string pirmas, antras;
+        is >> pirmas >> antras;
         
-        failo_pav << str1 << "\n" << str2 << endl;
-        string hash1 = hash(str1);
-        string hash2 = hash(str2);
-        failo_pav << hash1 << " " << hash2 << endl<<endl;
+        string hash1 = hash(pirmas);
+        string hash2 = hash(antras);
 
         int skirtumas = bitu_lyginimas(hex_i_binaru( hash1), hex_i_binaru(hash2));
         vidurkis_bit += skirtumas;
@@ -278,8 +308,15 @@ void nuu::lavinos_testavimas(){
        
     }
     vidurkis_bit /= 100000;
+    vidurkis_hex /= 100000;
 
-    failo_pav.close();
+    
+
+    cout<<"Skirtingumas bitu lygmenyje: \nVidurkis "<< 100 * vidurkis_bit / (64 * 4)  <<"%\nMin "<< 100 * min_bit / (64 * 4) << "%\nMax " << 100 * max_bit / (64 * 4)<<"%"<<endl;
+    cout<<"Skirtingumas hex'u lygmenyje: \nVidurkis "<< 100 * vidurkis_hex / (64)  <<"%\nMin "<< 100 * min_hex / (64) << "%\nMax " << 100 * max_hex / (64)<<"%"<<endl;
+
+    failas.close();
+
 }
 
 string hex_i_binaru(const string& hex) {

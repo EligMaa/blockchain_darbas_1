@@ -90,9 +90,10 @@ void ivedimas ( ){
                     testavimas("konstitucija.txt");
                     break;
                 case 11:
-                    atsitiktiniu_eiluciu_poros();
+                    // atsitiktiniu_eiluciu_poros();
                     nuu().tikrinti_hash_kolizijas();
                 case 12:
+                    // lavinos_failas();
                     nuu().lavinos_testavimas();
 
                     break;                
