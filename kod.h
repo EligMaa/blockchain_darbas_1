@@ -248,8 +248,15 @@ void nuu::tikrinti_hash_kolizijas() {
 void nuu::lavinos_testavimas(){
 
     ofstream failo_pav("lavinos.txt");
-    
-    for (int i = 0; i < 10; ++i) {
+
+    int min_bit = 260 ;
+    int max_bit = 0;
+    int vidurkis_bit = 0;
+    int min_hex = 65 ;
+    int max_hex = 0;
+    int vidurkis_hex = 0;
+
+    for (int i = 0; i < 100000; ++i) {
         string str1 = atsitiktinis_stringas(999);
         string str2 = str1 + 'A';
         str1 += 'B';
@@ -260,10 +267,17 @@ void nuu::lavinos_testavimas(){
         failo_pav << hash1 << " " << hash2 << endl<<endl;
 
         int skirtumas = bitu_lyginimas(hex_i_binaru( hash1), hex_i_binaru(hash2));
-        cout<<skirtumas<<endl;
-        // string hash1 = hash(str1);
-        // string hash2 = hash(str2);
+        vidurkis_bit += skirtumas;
+        min_bit = min(min_bit, skirtumas);
+        max_bit = max(max_bit, skirtumas);
+
+        skirtumas = hex_lyginimas(hash1, hash2);
+        vidurkis_hex += skirtumas;
+        min_hex = min(min_hex, skirtumas);
+        max_hex = max(max_hex, skirtumas);
+       
     }
+    vidurkis_bit /= 100000;
 
     failo_pav.close();
 }
@@ -276,11 +290,11 @@ string hex_i_binaru(const string& hex) {
         {'C', "1100"}, {'D', "1101"}, {'E', "1110"}, {'F', "1111"}
     };
 
-    string binary_str;
+    string bitu_stringas;
     for (char hex_char : hex) {
-        binary_str += hex_bit[toupper(hex_char)];
+        bitu_stringas += hex_bit[toupper(hex_char)];
     }
-    return binary_str;
+    return bitu_stringas;
 }
 
 int bitu_lyginimas(const string& hash1, const string& hash2) {
@@ -288,11 +302,19 @@ int bitu_lyginimas(const string& hash1, const string& hash2) {
     int skirtumas = 0;
 
     for (size_t i = 0; i < hash1.length(); ++i) {
-        if (hash1[i] != hash2[i]) {
-            skirtumas++;
-        }
+        if (hash1[i] != hash2[i]) 
+            ++skirtumas;
     }
     return skirtumas;
 }
 
+int hex_lyginimas(const string& hash1, const string& hash2){
+
+    int skirtumas = 0;
+    for (size_t i = 0; i < hash1.length(); ++i) {
+        if (hash1[i] != hash2[i]) ++skirtumas;
+    }
+
+    return skirtumas;   
+}
  
