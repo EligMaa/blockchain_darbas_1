@@ -170,10 +170,9 @@ void testavimas( string pav) {
         }
 
         double avg_time = laikas / 5;
-        cout << "perskaitytos eilutes: " << eiluciu_sk << ", vidutinis laikas: " << avg_time << " sekundes" << endl;
+        cout << "perskaitytos eilutes: " << eiluciu_sk << ". Vidutinis laikas: " << avg_time << " sekundes" << endl;
     }
 }
-
 
 string atsitiktinis_stringas(int length) {
     const string raides = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -184,8 +183,8 @@ string atsitiktinis_stringas(int length) {
     return atsitiktiniai_st;
 }
 
-void poru_generavimas(int pair_count, int ilgis, ofstream &failo_pav) {
-    for (int i = 0; i < pair_count; ++i) {
+void poru_generavimas(int poros, int ilgis, ofstream &failo_pav) {
+    for (int i = 0; i < poros; ++i) {
         string str1 = atsitiktinis_stringas(ilgis);
         string str2 = atsitiktinis_stringas(ilgis);
         failo_pav << str1 << " " << str2 << endl;
@@ -198,11 +197,8 @@ void atsitiktiniu_eiluciu_poros (){
     ofstream failo_pav("poros.txt");
 
     poru_generavimas(25000, 10, failo_pav);
-
     poru_generavimas(25000, 100, failo_pav);
-
     poru_generavimas(25000, 500, failo_pav);
-
     poru_generavimas(25000, 1000, failo_pav);
 
     failo_pav.close();
@@ -249,6 +245,54 @@ void nuu::tikrinti_hash_kolizijas() {
     cout << "Koliziju skaicius: " << kolizijos << endl;
 }
 
+void nuu::lavinos_testavimas(){
 
+    ofstream failo_pav("lavinos.txt");
+    
+    for (int i = 0; i < 10; ++i) {
+        string str1 = atsitiktinis_stringas(999);
+        string str2 = str1 + 'A';
+        str1 += 'B';
+        
+        failo_pav << str1 << "\n" << str2 << endl;
+        string hash1 = hash(str1);
+        string hash2 = hash(str2);
+        failo_pav << hash1 << " " << hash2 << endl<<endl;
 
+        int skirtumas = bitu_lyginimas(hex_i_binaru( hash1), hex_i_binaru(hash2));
+        cout<<skirtumas<<endl;
+        // string hash1 = hash(str1);
+        // string hash2 = hash(str2);
+    }
 
+    failo_pav.close();
+}
+
+string hex_i_binaru(const string& hex) {
+    unordered_map<char, string> hex_bit{
+        {'0', "0000"}, {'1', "0001"}, {'2', "0010"}, {'3', "0011"},
+        {'4', "0100"}, {'5', "0101"}, {'6', "0110"}, {'7', "0111"},
+        {'8', "1000"}, {'9', "1001"}, {'A', "1010"}, {'B', "1011"},
+        {'C', "1100"}, {'D', "1101"}, {'E', "1110"}, {'F', "1111"}
+    };
+
+    string binary_str;
+    for (char hex_char : hex) {
+        binary_str += hex_bit[toupper(hex_char)];
+    }
+    return binary_str;
+}
+
+int bitu_lyginimas(const string& hash1, const string& hash2) {
+    
+    int skirtumas = 0;
+
+    for (size_t i = 0; i < hash1.length(); ++i) {
+        if (hash1[i] != hash2[i]) {
+            skirtumas++;
+        }
+    }
+    return skirtumas;
+}
+
+ 

@@ -26,6 +26,7 @@ void ivedimas ( ){
         cout<<"9 - generuoti testus"<<endl;
         cout<<"10 - laiko testavimas"<<endl;
         cout<<"11 - kolizijos testaviams"<<endl;
+        cout<<"12 - lavinos testavimas"<<endl;
         cout<<"0 - baigti"<<endl;
         
         cout<<"--------------------------------------------------------"<<endl;
@@ -41,8 +42,8 @@ void ivedimas ( ){
 
                 meniu = stoi(input);
 
-                if (meniu < 0 || meniu > 11) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
-                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 11 ");
+                if (meniu < 0 || meniu > 12) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
+                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 12 ");
                 }
                             
             } 
@@ -91,6 +92,8 @@ void ivedimas ( ){
                 case 11:
                     atsitiktiniu_eiluciu_poros();
                     nuu().tikrinti_hash_kolizijas();
+                case 12:
+                    nuu().lavinos_testavimas();
 
                     break;                
                 case 0:

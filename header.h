@@ -14,6 +14,8 @@
 #include <chrono>
 #include <cctype>  // isupper()
 #include <unordered_set> 
+#include <unordered_map>
+
 
 
 
@@ -23,6 +25,8 @@ const std::vector<std::string> failai {"testasA.txt" , "testasB.txt" , "testasAt
 
 void ivedimas ( );
 void atsitiktiniu_eiluciu_poros ();
+int bitu_lyginimas(const string& hash1, const string& hash2);
+string hex_i_binaru(const string& hex);
 
 class nuu{
 
@@ -34,6 +38,7 @@ class nuu{
         string skaitymas (const string &ivestis);
         double laiko_matavimas( string& ivestis);
         void tikrinti_hash_kolizijas();
+        void lavinos_testavimas();
 
 
     private:
