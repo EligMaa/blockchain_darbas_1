@@ -25,6 +25,7 @@ void ivedimas ( ){
         cout<<"8 - ivesti ranka"<<endl;
         cout<<"9 - generuoti testus"<<endl;
         cout<<"10 - laiko testavimas"<<endl;
+        cout<<"11 - kolizijos testaviams"<<endl;
         cout<<"0 - baigti"<<endl;
         
         cout<<"--------------------------------------------------------"<<endl;
@@ -40,8 +41,8 @@ void ivedimas ( ){
 
                 meniu = stoi(input);
 
-                if (meniu < 0 || meniu > 10) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
-                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 10 ");
+                if (meniu < 0 || meniu > 11) {                                   ///tikrina ar ivestas skaicius yra nuo 0 iki 9
+                    throw invalid_argument("Klaida! Iveskite nuo 0 iki 11 ");
                 }
                             
             } 
@@ -87,7 +88,11 @@ void ivedimas ( ){
                 case 10:
                     testavimas("konstitucija.txt");
                     break;
-                
+                case 11:
+                    atsitiktiniu_eiluciu_poros();
+                    nuu().tikrinti_hash_kolizijas();
+
+                    break;                
                 case 0:
                     baigti = true;
                     break;  

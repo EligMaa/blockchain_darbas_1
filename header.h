@@ -12,7 +12,8 @@
 #include <sstream>
 #include <random>
 #include <chrono>
-
+#include <cctype>  // isupper()
+#include <unordered_set> 
 
 
 
@@ -32,13 +33,15 @@ class nuu{
 
         string skaitymas (const string &ivestis);
         double laiko_matavimas( string& ivestis);
+        void tikrinti_hash_kolizijas();
+
 
     private:
         int nr;
         string ivestis;
         string uzhashuotas;
         int ilgis;
-        void hash (string &ivestis );
+        string hash (string &ivestis );
         string konvertavimas(const array<unsigned long long, 4>& hash);
         
 };

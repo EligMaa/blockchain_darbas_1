@@ -11,13 +11,13 @@ nuu::nuu( int nr ) {
 
     laiko_matavimas(ivestis);
     cout << uzhashuotas <<endl;
-    atsitiktiniu_eiluciu_poros();
+
     // hash(ivestis);
 
 }
 
 
-void nuu::hash(string &ivestis){
+string nuu::hash(string &ivestis){
 
     unsigned long long randomas = ivestis.length() / 2 + 1;
     unsigned long long randomas2 = ivestis.length() / 3 - 9;
@@ -30,9 +30,11 @@ void nuu::hash(string &ivestis){
     for (char simbolis : ivestis) { 
 
         for (int i = 0; i < 4; ++i) {
+            
             hash[i] ^= (randomas * 999999 + simbolis );
             hash[i] *= (randomas2 ^ hash[i] * hash[i] );
         }
+        
         
         if (j % 3 == 0) {
             swap(hash[0], hash[3]);
@@ -46,9 +48,8 @@ void nuu::hash(string &ivestis){
 
         ++j;
     }
-    uzhashuotas = konvertavimas(hash);
-    
-    
+    return uzhashuotas = konvertavimas(hash);
+       
     
 }
 string nuu::konvertavimas(const array<unsigned long long, 4>& hash){
@@ -187,16 +188,15 @@ void poru_generavimas(int pair_count, int ilgis, ofstream &failo_pav) {
     for (int i = 0; i < pair_count; ++i) {
         string str1 = atsitiktinis_stringas(ilgis);
         string str2 = atsitiktinis_stringas(ilgis);
-        failo_pav << "(" << str1 << ", " << str2 << ")" << endl;
+        failo_pav << str1 << " " << str2 << endl;
     }
 }
 
 void atsitiktiniu_eiluciu_poros (){
-    srand(time(nullptr));  // Seed for random number generation
+    srand(time(nullptr));  
 
     ofstream failo_pav("poros.txt");
 
-    // Generate 25,000 pairs of strings with a length of 10
     poru_generavimas(25000, 10, failo_pav);
 
     poru_generavimas(25000, 100, failo_pav);
@@ -208,6 +208,47 @@ void atsitiktiniu_eiluciu_poros (){
     failo_pav.close();
 
 }
+
+
+void nuu::tikrinti_hash_kolizijas() {
+
+    ifstream poru_failas("poros.txt");
+    string eilute;
+    unordered_set<string> hash_rinkinys;  //  laikyti hashams
+    int kolizijos = 0;
+
+    ofstream f ("testas_kolizijos.txt");
+
+    if (!poru_failas) {
+        cerr << "Nepavyko atidaryti failo." << endl;
+        return;
+    }
+
+    while (getline(poru_failas, eilute)) {
+
+        istringstream is(eilute);
+        string pirmas, antras;
+        is >> pirmas >> antras;
+
+        string hash1 = hash(pirmas); 
+        f<<hash1<<" ";
+        string hash2 = hash(antras);
+        f<<hash2<<endl;
+
+        if (hash_rinkinys.find(hash1) != hash_rinkinys.end() || hash_rinkinys.find(hash2) != hash_rinkinys.end()) {
+            kolizijos++;
+        } else {
+            hash_rinkinys.insert(hash1);
+            hash_rinkinys.insert(hash2);
+        }
+    }
+
+    poru_failas.close();
+    f.close();
+
+    cout << "Koliziju skaicius: " << kolizijos << endl;
+}
+
 
 
 
