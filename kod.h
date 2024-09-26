@@ -309,9 +309,6 @@ void nuu::lavinos_testavimas(){
     }
     vidurkis_bit /= 100000;
     vidurkis_hex /= 100000;
-
-    
-
     cout<<"Skirtingumas bitu lygmenyje: \nVidurkis "<< 100 * vidurkis_bit / (64 * 4)  <<"%\nMin "<< 100 * min_bit / (64 * 4) << "%\nMax " << 100 * max_bit / (64 * 4)<<"%"<<endl;
     cout<<"Skirtingumas hex'u lygmenyje: \nVidurkis "<< 100 * vidurkis_hex / (64)  <<"%\nMin "<< 100 * min_hex / (64) << "%\nMax " << 100 * max_hex / (64)<<"%"<<endl;
 

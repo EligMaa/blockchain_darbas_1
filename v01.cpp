@@ -85,17 +85,16 @@ void ivedimas ( ){
                     generuoja_failus_Ats("testasAts1.txt", 1000);   
                     generuoja_failus_Ats("testasAts2.txt", 1000);   
                     generuoja_f_su_viena_skirtinga("testas_v_A.txt", "testas_v_B.txt", 1000);
+                    atsitiktiniu_eiluciu_poros();
+                    lavinos_failas();
                     break;
                 case 10:
                     testavimas("konstitucija.txt");
                     break;
                 case 11:
-                    // atsitiktiniu_eiluciu_poros();
                     nuu().tikrinti_hash_kolizijas();
                 case 12:
-                    // lavinos_failas();
                     nuu().lavinos_testavimas();
-
                     break;                
                 case 0:
                     baigti = true;
