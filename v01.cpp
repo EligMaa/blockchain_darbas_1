@@ -1,9 +1,14 @@
 #include "header.h"
 #include "kod.h"
+#include "papildoma.h"
 
 int main() {
     
-    ivedimas();
+    // ivedimas();
+
+    testavimas_papildoma("papildomai.txt" );
+
+
     return 0;
 }
 
@@ -89,7 +94,8 @@ void ivedimas ( ){
                     lavinos_failas();
                     break;
                 case 10:
-                    testavimas("konstitucija.txt");
+                    testavimas_p("papildomai.txt");
+                    // testavimas("konstitucija.txt");
                     break;
                 case 11:
                     nuu().tikrinti_hash_kolizijas();
