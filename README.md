@@ -69,6 +69,15 @@ Lavinos efekto testui naudojamas failas iš 100 000 atsitiktinių simbolių eilu
 
 <img src="https://github.com/user-attachments/assets/b629bed6-e2dd-4896-b762-80c295c75a3b" width="500">
 
+## Papildomos užduotys
+
+# SHA-256 ir mano hash'o palyginimas
+
+Šiai užduočiai susikūriau tekstinį failą iš 16384 eilučių „papildoma.txt“. Šis failas sudarytas iš kelis kartus padauginto "konstitucija.txt" failo. Greičio palyginimui naudojau SHA-256 hash algoritmą ([SHA-256 kodas](http://www.zedwood.com/article/cpp-sha256-function)). 
+![image](https://github.com/user-attachments/assets/8ef9be7b-6f86-4dfc-b948-bd02b5c8a2cf)
+<br>
+Diagramoje matyti, kad abu hash'ai veikia panašiu greičiu iki 256 eilutės. Didėjant eilučių kiekiui galima patebėti, kad SHA-256 algoritmas veikia efektyviau. 
+
 # Apibendrinimas
 
 Šiame eksperimente buvo atliktas hash funkcijos testavimas pagal deterministiškumą, kolizijų atsparumą, lavinos efektą ir veikimo laiką. Testai parodė, kad hash funkcija yra deterministinė – nepriklausomai nuo to, kiek kartų tas pats failas yra hash'uojamas, rezultatas visada yra vienodas. Eksperimentai su 25 000 porų, kurių ilgiai svyravo nuo 10 iki 1000 simbolių, nerado nė vienos kolizijos. Tai rodo, kad funkcija turi atsparumą kolizijoms. Lavinos efekto testai, atliekant su 100 000 atsitiktinių simbolių eilučių porų, kurių eilutės skyrėsi tik vienu simboliu, rezultatai rodo, kad hash funkcija generuoja pakankamai stiprų lavinos efektą, nes minimalūs ir maksimalūs procentiniai skirtingumai tiek bitų, tiek hex lygiu yra arti idealios lavinos savybės. Laiko testai su „konstitucija.txt“ parodė, kad hash funkcija yra efektyvi apdorojant tiek mažus, tiek didelius failus.
